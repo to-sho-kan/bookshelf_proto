@@ -5,23 +5,20 @@ require 'rails_helper'
 # end
 
 describe Book do
-  # タイトルと作者があれば有効であること
-  it "is valid with a title and author" do
+  it "タイトルと作者があれば有効であること" do
     book = Book.new(
              title: "foo",
              author: "bar" )
     expect(book).to be_valid
   end
 
-  # タイトルがなければ無効であること
-  it "is invalid without a title" do
+  it "タイトルがなければ無効であること" do
     book = Book.new(title: nil)
     book.valid?
     expect(book.errors[:title]).to include("can't be blank")
   end
 
-  # 作者がなければ無効であること
-  it "is invalid without a author" do
+  it "作者がなければ無効であること" do
     book = Book.new(author: nil)
     book.valid?
     expect(book.errors[:author]).to include("can't be blank")
