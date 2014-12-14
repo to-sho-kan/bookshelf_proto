@@ -1,0 +1,40 @@
+<div>
+	<h2>{{title}}</h2>
+  <div class="col-sm-12">
+  	<table class="table table-bordered table-hover">
+  		<thead>
+  			<tr>
+  				<th>No.</th>
+	  			<th class="col-sm-1 text-center">かご</th>
+	  			<th class="col-sm-4 text-center">タイトル</th>
+	  			<th class="col-sm-2 text-center">著者</th>
+	  			<th class="col-sm-1 text-center">出版社</th>
+	  			<th class="col-sm-2 text-center">発行年月日</th>
+	  			<th class="col-sm-1 text-center">状態</th>
+				</tr>
+				<tr>
+  				<th></th>
+  				<th></th>
+  				<th><input type="text" ng-model="search.name" /></th>
+  				<th><input type="text" ng-model="search.author" /></th>
+  				<th><input type="text" ng-model="search.publisher" /></th>
+  				<th></th>
+  				<th></th>
+				</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="book in bookList | filter:search">
+	  			<td class="text-center">{{$index+1}}</td>
+	  			<td class="text-center">
+	  				<input type="checkbox" ng-model="basket[book.libraryId]" />
+	  			</td>
+	  			<td><a ng-href="/#/book/{{book.libraryId}}">{{book.name}}</a></td>
+	  			<td>{{book.author}}</td>
+	  			<td>{{book.publisher}}</td>
+	  			<td>{{book.publishDate}}</td>
+	  			<td class="{{book.state | bookStateColor}}">{{book.state | bookState}}</td>
+	  		</tr>
+  		</tbody>
+  	</table>
+  </div>
+</div>

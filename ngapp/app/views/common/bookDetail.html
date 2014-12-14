@@ -1,0 +1,18 @@
+<div>
+	<h2>{{title}}</h2>
+	未実装<br>
+
+	<button class="btn btn-primary"
+	 ng-click="addBasket()"
+	 ng-show="canBorrow()">
+		この本を借りる
+	</button>
+	<button class="btn btn-primary"
+	 ng-click="popBasket()"
+	 ng-hide="canBorrow()">
+		この本を戻す
+	</button>
+	<button class="btn btn-default" ng-click="backToList()">
+		一覧へ戻る
+	</button>
+</div>

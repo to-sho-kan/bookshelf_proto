@@ -1,0 +1,48 @@
+{
+    "$shema": "http//json-schema.org/draft-04/schema#",
+    "id": "userMaster-schema.json",
+    "title": "利用者マスタ",
+    "type": "object",
+    "properties": {
+        "userId": {
+            "title": "ユーザーID",
+            "type": "integer",
+            "required": true
+        },
+        "name": {
+            "title": "名前",
+            "type": "string",
+            "maxlength": 40,
+            "required": true
+        },
+        "password": {
+            "title": "パスワード",
+            "type": "string",
+            "maxlength": 15,
+            "required": true
+        },
+        "memo": {
+            "title": "メモ",
+            "type": "string",
+            "maxlength": 40
+        },
+        "createdTime": {
+            "title": "作成日時",
+            "type": "string",
+            "format": "date-time"
+        },
+        "createdId": {
+            "title": "作成者ID",
+            "type": "integer"
+        },
+        "updatedTime": {
+            "title": "作成日時",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedId": {
+            "title": "更新者ID",
+            "type": "integer"
+        }
+    }
+}

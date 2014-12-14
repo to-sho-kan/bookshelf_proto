@@ -1,0 +1,40 @@
+gulp = require 'gulp'
+coffee = require 'gulp-coffee'
+sass = require 'gulp-sass'
+webserver = require 'gulp-webserver'
+
+# coffeeのコンパイル
+gulp.task 'compile-coffee', ->
+	gulp.src 'app/coffee/**/*.coffee'
+		.pipe coffee()
+		.pipe gulp.dest 'app/scripts'
+
+# sassのコンパイル
+gulp.task 'compile-sass', ->
+	gulp.src 'app/sass/**/*.scss'
+		.pipe sass()
+		.pipe gulp.dest 'app/styles'
+
+# coffeeの自動コンパイル
+gulp.task 'watch-coffee', ->
+	gulp.watch ['./app/coffee/**/*.coffee'], ['compile-coffee']
+
+# sassの自動コンパイル
+gulp.task 'watch-sass', ->
+	gulp.watch ['./app/sass/**/*.scss'], ['compile-sass']
+
+# webserverの起動
+gulp.task 'webserver', ->
+	gulp.src 'app'
+		.pipe webserver
+			livereload: true
+			open: true
+
+# デフォルトタスク
+gulp.task 'default', [
+	'compile-coffee'
+	'compile-sass'
+	'webserver'
+	'watch-coffee'
+	'watch-sass'
+]

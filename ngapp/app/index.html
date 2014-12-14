@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="bookshelf" lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles/common.css">
+	<title>hoge</title>
+</head>
+<body>
+	<div class="container">
+		<div ng-controller="navCtrl">
+			<div>
+				<ul class="nav nav-tabs">
+					<li ng-show="nav.home"><a href="/#/home/">Home</a></li>
+					<li ng-show="nav.rental"><a ng-href="/#/rental/{{userId}}/">Rental</a></li>
+					<li ng-show="nav.book"><a href="/#/book/">Books</a></li>
+					<li ng-show="nav.userNew"><a href="/#/user/new/">UserRegistration</a></li>
+					<li ng-show="nav.logout"><a href="/#/logout/">Logout</a></li>
+					<li ng-show="nav.admin"><a href="/#/admin/">Admin</a></li>
+					<li ng-show="nav.users"><a href="/#/user/">Users</a></li>
+				</ul>
+			</div>
+			<div ng-view class="main"></div>
+		</div>
+	</div>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="scripts/services/service.js"></script>
+	<script src="scripts/filters/filter.js"></script>
+	<script src="scripts/directives/directive.js"></script>
+	<script src="scripts/controllers/controller.js"></script>
+	<script src="scripts/main.js"></script>
+</body>
+</html>

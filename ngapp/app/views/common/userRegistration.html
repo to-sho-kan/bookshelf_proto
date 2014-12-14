@@ -1,0 +1,85 @@
+<div class="col-sm-8">
+  <form name="registerForm" class="form-horizontal"
+  	ng-submit="register()" novalidate>
+	  <div class="form-group">
+		  <h2 class="form-signin-heading">Please input your information</h2>
+		</div>
+	  <div class="form-group" ng-class="{'has-error': registerForm.name.$dirty && registerForm.name.$invalid}">
+			<label class="col-sm-2 control-label">UserName</label>
+	  	<div class="col-sm-5">
+			  <input type="text" name='name' class="form-control"
+			  	class="form-control"
+			  	ng-model="user.name"
+			  	ng-pattern="/^[a-zA-Z0-9]+$/"
+			  	ng-minlength="6"
+			  	ng-maxlength="15"
+			  	required autofocus />
+				<p class="help-block">※必須、半角英数字6文字以上15文字以内</p>
+		  </div>
+      <span ng-if="registerForm.name.$dirty" ng-messages="registerForm.name.$error">
+				<span class="help-block" ng-message="required">
+					必須です
+				</span>
+				<span class="help-block" ng-message="pattern">
+					使用できない文字が含まれています
+				</span>
+				<span class="help-block" ng-message="minlength">
+					6文字以上で設定してください
+				</span>
+				<span class="help-block" ng-message="maxlength">
+					15文字以内で設定してください
+				</span>
+			</span>
+	  </div>
+	  <div class="form-group" ng-class="{'has-error': registerForm.password.$dirty && registerForm.password.$invalid}">
+			<label class="col-sm-2 control-label">Password</label>
+	  	<div class="col-sm-5">
+			  <input type="password" name="password"
+			  	class="form-control"
+			  	ng-model="user.password"
+			  	required
+			  	ng-minlength="6"
+			  	ng-maxlength="15" />
+				<p class="help-block">※必須、6文字以上15文字以内</p>
+      </div>
+      <span ng-if="registerForm.password.$dirty" ng-messages="registerForm.password.$error">
+				<span class="help-block" ng-message="required">
+					必須です
+				</span>
+				<span class="help-block" ng-message="minlength">
+					6文字以上で設定してください
+				</span>
+				<span class="help-block" ng-message="maxlength">
+					15文字以内で設定してください
+				</span>
+			</span>
+	  </div>
+	  <div class="form-group" ng-class="{'has-error': registerForm.email.$dirty && registerForm.email.$invalid}">
+			<label class="col-sm-2 control-label">EmailAddress</label>
+	  	<div class="col-sm-5">
+			  <input type="email" name="email"
+			  	class="form-control"
+			  	ng-model="user.email" />
+				<p class="help-block">※任意</p>
+			</div>
+      <span ng-if="registerForm.email.$dirty" ng-messages="registerForm.email.$error">
+	      <span class="help-block" ng-message="email">
+					メールアドレスが不正です
+				</span>
+		</div>
+	  <div class="form-group col-sm-5">
+	  	<div class="col-sm-offset-5 col-sm-10">
+			  <button type="submit"
+			  	class="btn btn-lg btn-primary"
+			  	ng-disabled="registerForm.$invalid">
+			  	submit
+			 	</button>
+			  <button type="button"
+			  	class="btn btn-lg"
+			  	ng-click="cancel()">
+			  	cancel
+			 	</button>
+		 	</div>
+		</div>
+	</form>
+</div>
