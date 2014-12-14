@@ -11,3 +11,8 @@ bower install
 ```
 gulp
 ```
+
+課題
+---
+初回起動時にlivereloadが２回走る
+
