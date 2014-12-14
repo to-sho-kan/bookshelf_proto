@@ -32,12 +32,8 @@ app.config [
     .when '/book/:libraryId',
       templateUrl: '../views/common/bookDetail.html'
       controller: 'bookDetailCtrl'
-    .when '/404/',
-      templateUrl: '../views/common/404.html'
     .when '/error/',
       templateUrl: '../views/common/error.html'
-    .when '/noAuthorization/',
-      templateUrl: '../views/common/noAuthorization.html'
     # client
     .when '/home/',
       templateUrl: '../views/client/home.html'
@@ -78,7 +74,7 @@ app.config [
       controller: 'rentalOperationCtrl'
     # other
     .otherwise
-    	templateUrl: '../views/common/404.html'
+    	templateUrl: '../views/common/error.html'
 
 ]
 

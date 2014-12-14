@@ -1,3 +1,7 @@
+###
+TODO: 現状、初回起動時にlivereloadが２回走ってしまう...	
+###
+
 gulp = require 'gulp'
 coffee = require 'gulp-coffee'
 sass = require 'gulp-sass'
