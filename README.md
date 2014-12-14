@@ -24,7 +24,7 @@ Install grunt, bower, etc.
 
 ```
 $ cd ngapp/
-$ npm install -g grunt-cli bower
+$ npm install -g gulp bower
 $ npm install
 $ bower install
 ```
@@ -37,7 +37,7 @@ $ rails s
 
 # in ngapp/
 $ cd ngapp/
-$ grunt serve
+$ gulp
 ```
 
 

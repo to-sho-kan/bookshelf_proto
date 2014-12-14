@@ -1,0 +1,52 @@
+{
+    "$shema": "http//json-schema.org/draft-04/schema#",
+    "id": "rentalMaster-schema.json",
+    "title": "レンタルデータ",
+    "type": "object",
+    "properties": {
+        "rentalId": {
+            "title": "レンタルID",
+            "type": "integer",
+            "required": true
+        },
+        "borrowerId": {
+            "title": "借用者ID",
+            "type": "integer",
+            "required": true
+        },
+        "bookId": {
+            "title": "書籍ID",
+            "type": "integer",
+            "required": true
+        },
+        "borrowTime": {
+            "title": "貸出日時",
+            "type": "string",
+            "format": "date-time",
+            "required": true
+        },
+        "returnTime": {
+            "title": "返却日時",
+            "type": "string",
+            "format": "date-time"
+        },
+        "createdTime": {
+            "title": "作成日時",
+            "type": "string",
+            "format": "date-time"
+        },
+        "createdId": {
+            "title": "作成者ID",
+            "type": "integer"
+        },
+        "updatedTime": {
+            "title": "作成日時",
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedId": {
+            "title": "更新者ID",
+            "type": "integer"
+        }
+    }
+}

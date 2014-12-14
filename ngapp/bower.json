@@ -1,0 +1,30 @@
+{
+  "name": "bookshelf",
+  "version": "0.0.0",
+  "authors": [
+    "Naoki Gondo"
+  ],
+  "description": "to-sho-kan",
+  "main": "main.js",
+  "keywords": [
+    "to-sho-kan"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "~1.3.1",
+    "angular-bootstrap": "~0.11.2",
+    "bootstrap": "~3.2.0",
+    "angular-route": "~1.3.1",
+    "angular-resource": "~1.3.1",
+    "angular-messages": "~1.3.1"
+  }
+}

@@ -1,0 +1,29 @@
+<div>
+	<h2>{{title}}</h2>
+  <div class="user-list-table">
+  	<table class="table table-bordered table-hover">
+  		<thead>
+  			<tr>
+  				<th>No.</th>
+	  			<th>名前</th>
+	  			<th>登録年月日</th>
+	  			<th>メモ</th>
+				</tr>
+				<tr>
+  				<th></th>
+  				<th><input type="text" ng-model="search.name"></th>
+  				<th></th>
+  				<th></th>
+				</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="user in userList | filter:search">
+	  			<td>{{$index+1}}</td>
+	  			<td><a ng-href="/#/user/{{user.userId}}">{{user.name}}</a></td>
+	  			<td>{{user.createdTime | date:'yyyy-MM-dd'}}</td>
+	  			<td>{{user.memo}}</td>
+	  		</tr>
+  		</tbody>
+  	</table>
+  </div>
+</div>
