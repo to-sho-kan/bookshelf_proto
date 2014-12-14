@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-#RSpec.describe Book, :type => :model do
-#  pending "add some examples to (or delete) #{__FILE__}"
-# end
-
 describe Book do
   it "タイトルと作者があれば有効であること" do
     book = Book.new(
