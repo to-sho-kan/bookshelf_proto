@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.8'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
+gem 'spring', group: :development
 
 gem 'mysql2'
 
@@ -42,7 +41,6 @@ end
 ## Ruby Style Guide(ja)
 ## https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
 gem 'rubocop', require: false
-
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
