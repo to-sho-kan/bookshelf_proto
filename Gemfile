@@ -8,6 +8,10 @@ gem 'spring', group: :development
 
 gem 'mysql2'
 
+group :production do
+  gem 'rails_12factor' # herokuデプロイ用
+end
+
 ## 参考サイト
 ## http://qiita.com/yaotti/items/c6e850010f36acedb0e1http://qiita.com/yusabana/items/8ce54577d959bb085b37
 ## http://qiita.com/emadurandal/items/1062364905f89910297d
