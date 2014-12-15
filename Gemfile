@@ -6,7 +6,14 @@ gem 'rails-api'
 
 gem 'spring', group: :development
 
-gem 'mysql2'
+group :test, :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor' # herokuデプロイ用
+end
 
 ## 参考サイト
 ## http://qiita.com/yaotti/items/c6e850010f36acedb0e1http://qiita.com/yusabana/items/8ce54577d959bb085b37
