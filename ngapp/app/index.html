@@ -5,8 +5,10 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-Control" content="no-cache">
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<!-- build:css styles/css.min.css-->
 	<link rel="stylesheet" type="text/css" href="styles/common.css">
-	<title>hoge</title>
+	<!-- endbuild-->
+	<title>{{pageTitle}}</title>
 </head>
 <body>
 	<div class="container">
@@ -30,10 +32,12 @@
 	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
 	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
 	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<!-- build:js scripts/app.min.js-->
 	<script src="scripts/services/service.js"></script>
 	<script src="scripts/filters/filter.js"></script>
 	<script src="scripts/directives/directive.js"></script>
 	<script src="scripts/controllers/controller.js"></script>
 	<script src="scripts/main.js"></script>
+	<!-- endbuild-->
 </body>
 </html>
