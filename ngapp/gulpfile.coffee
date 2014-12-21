@@ -1,7 +1,3 @@
-###
-TODO: 現状、初回起動時にlivereloadが２回走ってしまう...	
-###
-
 COFFEE_FILES = 'app/coffee/**/*.coffee'
 SASS_FILES = 'app/sass/**/*.scss'
 SCRIPT_FILES = 'dist/scripts/**/*.js'
