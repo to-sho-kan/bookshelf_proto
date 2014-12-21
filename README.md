@@ -20,7 +20,7 @@ $ bundle install
 ```
 
 
-Install grunt, bower, etc.
+Install gulp, bower, etc.
 
 ```
 $ cd ngapp/
@@ -37,6 +37,7 @@ $ rails s
 
 # in ngapp/
 $ cd ngapp/
+$ gulp build
 $ gulp
 ```
 

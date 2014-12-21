@@ -26,5 +26,28 @@
     "angular-route": "~1.3.1",
     "angular-resource": "~1.3.1",
     "angular-messages": "~1.3.1"
+  },
+  "overrides": {
+    "angular": {
+      "main": "angular.js"
+    },
+    "angular-bootstrap": {
+      "main": "ui-bootstrap-tpls.js"
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/css/bootstrap.css.map"
+      ]
+    },
+    "angular-route": {
+      "main": "angular-route.js"
+    },
+    "angular-resource": {
+      "main": "angular-resource.js"
+    },
+    "angular-messages": {
+      "main": "angular-messages.js"
+    }
   }
 }

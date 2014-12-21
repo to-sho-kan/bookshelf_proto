@@ -82,8 +82,6 @@ app.run [
 	'$rootScope'
   '$location'
 	($rootScope, $location) ->
-    $rootScope.pageTitle = 'bookShelf'
-
     $rootScope.$on '$routeChangeStart', ->
       state = 'requireLogin'
       type = 'user'
