@@ -1,4 +1,10 @@
 rvm:
   - 2.1.5
-before_script:
-  - bin/rake db:install
+env:
+  - RAILS_ENV=test
+script:
+  - bundle exec rake db:migrate
+  - bundle exec spec
+after_failure:
+  - "echo $RAILS_ENV"
+  - "bundle exec rake --version"
