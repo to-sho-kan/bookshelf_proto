@@ -44,11 +44,13 @@ group :test, :development do
 
   gem 'guard-rails'
   gem 'guard-rspec', require: false
-end
 
-## Ruby Style Guide(ja)
-## https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
-gem 'rubocop', require: false
+  ## Ruby Style Guide(ja)
+  ## https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  gem 'rubocop', require: false
+
+  gem 'faker'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
