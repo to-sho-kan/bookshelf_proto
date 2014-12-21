@@ -34,11 +34,6 @@ gulp.task 'compile-sass', ->
 		.pipe sass()
 		.pipe gulp.dest DEV_PATH + '/styles'
 
-# htmlの変更感知
-gulp.task 'watch-html', ->
-	gulp.watch ['app/index.html'], ['copy-index']
-	gulp.watch [VIEW_FILES], ['copy-view']
-
 # coffeeの自動コンパイル(開発用)
 gulp.task 'watch-coffee', ->
 	gulp.watch [COFFEE_FILES], ['compile-coffee']
@@ -115,7 +110,6 @@ gulp.task 'prod', ['clean', 'build'], ->
 
 # デフォルトタスク
 gulp.task 'default', [
-	'watch-html'
 	'watch-coffee'
 	'watch-sass'
 	'webserver'
