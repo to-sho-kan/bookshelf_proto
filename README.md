@@ -1,4 +1,4 @@
-BookShelf
+BookShelf [![Build Status](https://travis-ci.org/to-sho-kan/bookshelf_proto.svg)](https://travis-ci.org/to-sho-kan/bookshelf_proto)
 =========
 ローカルコミュニティ向け・書籍管理アプリのプロトタイプ
 
