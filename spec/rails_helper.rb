@@ -52,4 +52,25 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  # 参考サイト
+  # http://qiita.com/izumin5210/items/de614b5b5b2c44486e87
+  config.include JsonSpec::Helpers
+  config.include RSpec::RequestDescriber, type: :request
+  # config.include RequestHelpers, type: :request
+  # config.include RequestMacros, type: :request
+
+  config.before :all do
+    FactoryGirl.reload
+  end
+
+  config.before :suite do
+    DatabaseRewinder.clean_all
+  end
+
+  config.after :each do
+    DatabaseRewinder.clean
+  end
+
+  Autodoc.configuration.toc = true
 end

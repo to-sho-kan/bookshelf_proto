@@ -39,8 +39,6 @@ group :test, :development do
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  # gem 'database_cleaner'
-  # gem 'database_rewinder
 
   gem 'guard-rails'
   gem 'guard-rspec', require: false
@@ -50,6 +48,16 @@ group :test, :development do
   gem 'rubocop', require: false
 
   gem 'faker'
+end
+
+# 参考サイト
+# http://qiita.com/izumin5210/items/de614b5b5b2c44486e87
+group :test do
+  # gem 'database_cleaner'
+  gem 'database_rewinder'
+  gem 'rspec-request_describer'
+  gem 'autodoc'
+  gem 'json_spec'
 end
 
 # To use ActiveModel has_secure_password
