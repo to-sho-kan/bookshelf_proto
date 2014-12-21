@@ -81,6 +81,9 @@ GEM
       unicode-display_width (~> 0.1.1)
     hitimes (1.2.2)
     i18n (0.6.11)
+    jbuilder (2.2.5)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
     json (1.8.1)
     json_spec (1.1.4)
       multi_json (~> 1.0)
@@ -210,6 +213,7 @@ DEPENDENCIES
   guard-rspec
   hirb
   hirb-unicode
+  jbuilder
   json_spec
   pg
   pry-doc
