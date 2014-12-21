@@ -56,7 +56,7 @@ RSpec.configure do |config|
   # 参考サイト
   # http://qiita.com/izumin5210/items/de614b5b5b2c44486e87
   config.include JsonSpec::Helpers
-  config.include RSpec::RequestDescriber, type: :request
+  # config.include RSpec::RequestDescriber, type: :request
   # config.include RequestHelpers, type: :request
   # config.include RequestMacros, type: :request
 
@@ -73,4 +73,7 @@ RSpec.configure do |config|
   end
 
   Autodoc.configuration.toc = true
+
+  # ファクトリを簡単に呼び出せるよう、Factory Girl の構文をインクルードする
+  config.include FactoryGirl::Syntax::Methods
 end
