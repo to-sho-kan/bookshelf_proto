@@ -67,7 +67,7 @@ gulp.task 'build', [
 		paths:
 			bowerDirectory: 'bower_components'
 			bowerJson: 'bower.json'
-	.pipe gulp.dest DEV_PATH + '/bower_components'
+	.pipe gulp.dest DEV_PATH + '/vendor'
 
 # デプロイ用ディレクトリ削除
 gulp.task 'clean', ->
@@ -79,7 +79,7 @@ gulp.task 'clean', ->
 		force: true
 	del.sync PROD_PATH + '/styles',
 		force: true
-	del.sync PROD_PATH + '/bower_components',
+	del.sync PROD_PATH + '/vendor',
 		force: true
 
 # デプロイ用タスク
@@ -88,7 +88,7 @@ gulp.task 'prod', ['clean', 'build'], ->
 		paths:
 			bowerDirectory: 'bower_components'
 			bowerJson: 'bower.json'
-	.pipe gulp.dest PROD_PATH + '/bower_components'
+	.pipe gulp.dest PROD_PATH + '/vendor'
 
 	gulp.src VIEW_FILES
 		.pipe gulp.dest PROD_PATH + '/views'
