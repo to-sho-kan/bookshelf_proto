@@ -5,4 +5,11 @@ class UsersController < ApplicationController
     @users = User.all
     render
   end
+
+  # GET /users/:id
+  # GET /users/:id.json
+  def show
+    @user = User.find(params[:id])
+    render
+  end
 end
