@@ -61,3 +61,5 @@ gem 'rubocop', require: false
 
 # Deploy with Capistrano
 # gem 'capistrano', :group => :development
+
+gem 'jbuilder', '~> 2.0'
