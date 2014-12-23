@@ -44,3 +44,6 @@ node_modules
 # compiled javaScript and css
 app/scripts
 app/styles
+
+# bower_components
+app/vendor

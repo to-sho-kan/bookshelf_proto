@@ -20,7 +20,7 @@ $ bundle install
 ```
 
 
-Install grunt, bower, etc.
+Install gulp, bower, etc.
 
 ```
 $ cd ngapp/
@@ -37,6 +37,7 @@ $ rails s
 
 # in ngapp/
 $ cd ngapp/
+$ gulp build
 $ gulp
 ```
 
@@ -51,6 +52,17 @@ Ticket
 
 Deploy
 ======
+/publicにフロントエンド側のファイルを作成する
+```
+$ cd ngapp/
+$ gulp prod
+```
+
+/publicのフロントエンド側のファイルを削除する
+```
+$ cd ngapp/
+$ gulp clean
+```
 
 Test
 ====

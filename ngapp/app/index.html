@@ -4,9 +4,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-Control" content="no-cache">
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="vendor/bootstrap.css">
+	<!-- build:css styles/css.min.css-->
 	<link rel="stylesheet" type="text/css" href="styles/common.css">
-	<title>hoge</title>
+	<!-- endbuild-->
+	<title>bookShelf</title>
 </head>
 <body>
 	<div class="container">
@@ -25,15 +27,17 @@
 			<div ng-view class="main"></div>
 		</div>
 	</div>
-	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="bower_components/angular-route/angular-route.min.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
-	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
-	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="vendor/angular.js"></script>
+	<script src="vendor/angular-route.js"></script>
+	<script src="vendor/angular-resource.js"></script>
+	<script src="vendor/angular-messages.js"></script>
+	<script src="vendor/ui-bootstrap-tpls.js"></script>
+	<!-- build:js scripts/app.min.js-->
 	<script src="scripts/services/service.js"></script>
 	<script src="scripts/filters/filter.js"></script>
 	<script src="scripts/directives/directive.js"></script>
 	<script src="scripts/controllers/controller.js"></script>
 	<script src="scripts/main.js"></script>
+	<!-- endbuild-->
 </body>
 </html>
