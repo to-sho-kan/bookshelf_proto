@@ -1,2 +1,10 @@
 rvm:
   - 2.1.5
+env:
+  - RAILS_ENV=test
+script:
+  - bundle exec rake db:migrate
+  - bundle exec rspec
+after_failure:
+  - "echo $RAILS_ENV"
+  - "bundle exec rake --version"
