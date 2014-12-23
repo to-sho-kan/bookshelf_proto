@@ -235,6 +235,8 @@ controller.controller 'userListCtrl', ['$scope', ($scope) ->
 ###
 controller.controller 'userCtrl', ['$scope', ($scope) ->
 	$scope.title = 'ユーザー詳細'
+	$scope.user =
+		{ userId: 1, name: 'Nanashi1', createdTime: '2014-01-01', memo: 'memo1' }
 ]
 
 ###
