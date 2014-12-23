@@ -68,12 +68,3 @@ app.config [
     .otherwise
       templateUrl: '../views/common/error.html'
 ]
-.config [
-  '$httpProvider'
-  ($httpProvider) ->
-    $httpProvider.defaults.transformRequest = (data) ->
-      return data if data is `undefined`
-      $.param data
-
-    $httpProvider.defaults.headers.post = "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-]

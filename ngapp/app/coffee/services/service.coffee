@@ -38,7 +38,7 @@ service.factory 'bookService', [
   '$resource'
   ($resource) ->
     getAll: ->
-      $resource('/books').query()
+      $resource('/books.json').query()
     getById: (bookId) ->
       $resource('/books/' + bookId + '.json').get({id: bookId})
 ]

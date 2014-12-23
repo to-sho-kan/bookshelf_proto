@@ -3,7 +3,7 @@ filter = angular.module 'bookshelf.filters', []
 ###
 # 蔵書状態フィルター
 ###
-filter.filter 'bookState', ->
+filter.filter 'bookStatus', ->
 	return (input) ->
 		return '不明' unless input?
 		switch input
@@ -14,7 +14,7 @@ filter.filter 'bookState', ->
 ###
 # 蔵書状態フィルター
 ###
-filter.filter 'bookStateColor', ->
+filter.filter 'bookStatusColor', ->
 	return (input) ->
 		return '' unless input?
 		switch input
