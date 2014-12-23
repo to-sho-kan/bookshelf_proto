@@ -2,12 +2,7 @@ require 'rails_helper'
 
 describe Book do
   it 'タイトルと作者、出版社、発行日、状態があれば有効であること' do
-    book = Book.new(
-             title: 'foo',
-             author: 'bar',
-             publisher: 'someone',
-             issue_date: '2014-12-31',
-             status: 1)
+    book = create(:book)
     expect(book).to be_valid
   end
 
