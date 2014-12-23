@@ -1,11 +1,11 @@
 app = angular.module 'bookshelf'
 
 app.config [
-	'$routeProvider'
-	'$locationProvider'
-	($routeProvider, $locationProvider) ->
-		$routeProvider
-		# common
+  '$routeProvider'
+  '$locationProvider'
+  ($routeProvider, $locationProvider) ->
+    $routeProvider
+    # common
     .when '/',
       templateUrl: '../views/common/root.html'
       controller: 'rootCtrl'
@@ -66,5 +66,14 @@ app.config [
       controller: 'rentalOperationCtrl'
     # other
     .otherwise
-    	templateUrl: '../views/common/error.html'
+      templateUrl: '../views/common/error.html'
+]
+.config [
+  '$httpProvider'
+  ($httpProvider) ->
+    $httpProvider.defaults.transformRequest = (data) ->
+      return data if data is `undefined`
+      $.param data
+
+    $httpProvider.defaults.headers.post = "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 ]

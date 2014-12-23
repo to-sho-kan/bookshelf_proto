@@ -11,7 +11,7 @@
 				</tr>
 				<tr>
   				<th></th>
-  				<th><input type="text" ng-model="search.name"></th>
+  				<th><input type="text" ng-model="search.firstName"></th>
   				<th></th>
   				<th></th>
 				</tr>
@@ -19,8 +19,8 @@
   		<tbody>
   			<tr ng-repeat="user in userList | filter:search">
 	  			<td>{{$index+1}}</td>
-	  			<td><a ng-href="/#/user/{{user.userId}}">{{user.name}}</a></td>
-	  			<td>{{user.createdTime | date:'yyyy-MM-dd'}}</td>
+	  			<td><a ng-href="/#/user/{{user.id}}">{{user.firstName + user.lastName}}</a></td>
+	  			<td>{{user.createdAt | date:'yyyy-MM-dd'}}</td>
 	  			<td>{{user.memo}}</td>
 	  		</tr>
   		</tbody>
