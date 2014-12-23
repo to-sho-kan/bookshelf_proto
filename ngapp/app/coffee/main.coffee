@@ -6,84 +6,39 @@ app = angular.module 'bookshelf', [
 	'ui.bootstrap'
 	'ngRoute'
   'ngMessages'
-]
-
-app.config [
-	'$routeProvider'
-	'$locationProvider'
-	($routeProvider, $locationProvider) ->
-		$routeProvider
-		# common
-    .when '/',
-      templateUrl: '../views/common/root.html'
-      controller: 'rootCtrl'
-    .when '/login/',
-      templateUrl: '../views/common/login.html'
-      controller: 'loginCtrl'
-    .when '/logout/',
-      templateUrl: '../views/common/logout.html'
-      controller: 'logoutCtrl'
-     .when '/user/new/',
-      templateUrl: '../views/common/userRegistration.html'
-      controller: 'userRegistrationCtrl'
-    .when '/book/',
-      templateUrl: '../views/common/bookList.html'
-      controller: 'bookListCtrl'
-    .when '/book/:libraryId',
-      templateUrl: '../views/common/bookDetail.html'
-      controller: 'bookDetailCtrl'
-    .when '/error/',
-      templateUrl: '../views/common/error.html'
-    # client
-    .when '/home/',
-      templateUrl: '../views/client/home.html'
-      controller: 'homeCtrl'
-    .when '/profile/:userId/',
-      templateUrl: '../views/client/profile.html'
-      controller: 'profileCtrl'
-    .when '/profile/:userId/edit/',
-      templateUrl: '../views/client/home.html'
-      controller: 'profileEditCtrl'
-    .when '/borrow/:bookId/',
-      templateUrl: '../views/common/borrow.html'
-      controller: 'borrowCtrl'
-    .when '/rental/:userId/',
-      templateUrl: '../views/client/rentalList.html'
-      controller: 'rentalListCtrl'
-    # admin
-    .when '/admin/',
-      templateUrl: '../views/admin/admin.html'
-      controller: 'adminCtrl'
-    .when '/user/',
-      templateUrl: '../views/admin/userList.html'
-      controller: 'userListCtrl'
-    .when '/user/:userId/',
-      templateUrl: '../views/admin/user.html'
-      controller: 'userCtrl'
-    .when '/user/:userId/edit/',
-      templateUrl: '../views/admin/user.html'
-      controller: 'userEditCtrl'
-    .when '/book/new/',
-      templateUrl: '../views/admin/book.html'
-      controller: 'bookNewCtrl'
-    .when '/book/:bookId/edit/',
-      templateUrl: '../views/admin/book.html'
-      controller: 'bookEditCtrl'
-    .when '/operation/',
-      templateUrl: '../views/admin/operation.html'
-      controller: 'rentalOperationCtrl'
-    # other
-    .otherwise
-    	templateUrl: '../views/common/error.html'
-
+  'ngMockE2E'
 ]
 
 app.run [
-	'$rootScope'
-  '$location'
-	($rootScope, $location) ->
+	'$rootScope', '$httpBackend'
+	($rootScope, $httpBackend) ->
     $rootScope.$on '$routeChangeStart', ->
       state = 'requireLogin'
       type = 'user'
 #      $rootScope.$broadcast 'navChange', state, type
+    
+    $httpBackend.whenGET /\.\.\/views\// 
+    .passThrough()
+
+    $httpBackend.whenGET '/users'
+    .respond 200, [
+        { id: 1, firstName: 'Nanashi1', lastName: 'san', createdAt: '2014-12-21T17:32:21+09:00', memo: 'memo1'}
+        { id: 2, firstName: 'Nanashi2', lastName: 'san', createdAt: '2014-12-21T17:32:21+09:00', memo: 'memo2'}
+        { id: 3, firstName: 'Nanashi3', lastName: 'san', createdAt: '2014-12-21T17:32:21+09:00', memo: 'memo3'}
+        { id: 4, firstName: 'Nanashi4', lastName: 'san', createdAt: '2014-12-21T17:32:21+09:00', memo: 'memo4'}
+      ], {}
+
+    $httpBackend.whenGET '/books'
+    .respond 200, [
+        { id: 1, bookId: 1, title: 'Book1', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+        { id: 2, bookId: 2, title: 'Book2', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+        { id: 3, bookId: 3, title: 'Book3', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+        { id: 4, bookId: 4, title: 'Book4', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+        { id: 5, bookId: 5, title: 'Book5', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 1 }
+        { id: 6, bookId: 6, title: 'Book6', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 1 }
+        { id: 7, bookId: 7, title: 'Book7', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 2 }
+        { id: 8, bookId: 8, title: 'Book8', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+        { id: 9, bookId: 9, title: 'Book9', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+        { id: 10, bookId: 10, title: 'Book10', author: 'hoge1', publisher: 'someone', issueDate: '2014-12-21T17:32:21+09:00', state: 0 }
+      ], {}
 ]
