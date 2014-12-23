@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
+  # GET /users
+  # GET /users.json
   def index
-    users = User.all.each.map do |user|
-      { 'firstName' => user.first_name,
-        'lastName'  => user.last_name,
-        'createdAt' => user.created_at,
-        'memo'      => user.memo }
-    end
-
-    render json: { users: users }.to_json
+    @users = User.all
+    render
   end
 end
