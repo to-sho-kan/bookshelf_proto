@@ -1,48 +1,46 @@
 service = angular.module 'bookshelf.services', [
-	'ngResource'
+  'ngResource'
 ]
+
+host = 'http://localhost:3000'
 
 ###
 # 共有オブジェクト
 ###
 service.service 'sharedStateService', [
-	() ->
-		type: ''
-		userId: ''
+  () ->
+    type: ''
+    userId: ''
 ]
 
 ###
 # 借り物かご
 ###
 service.service 'basketService', [
-	() ->
-		books: {}
+  () ->
+    books: {}
 ]
 
 ###
-# ユーザーリソース
+# ユーザーサービス
 ###
 service.factory 'userService', [
-	'$resource'
-	($resource) ->
-		resource = $resource('/api/client/:id', {id: '@userId'})
-		return resource
-]
-
-###
-# ユーザー一覧
-###
-service.factory 'userListService', [
-	'userService'
-	(userService) ->
-		return userService.query()
+  '$resource'
+  ($resource) ->
+    getAll: ->
+      $resource(host + '/users.json').query()
+    getById: (userId) ->
+      $resource(host + '/users/' + userId + '.json').get({id: userId})
 ]
 
 ###
 # 書籍一覧
 ###
-service.factory 'bookListService', [
-	'$resource'
-	($resource) ->
-		resource = $resource('/api/book/')
+service.factory 'bookService', [
+  '$resource'
+  ($resource) ->
+    getAll: ->
+      $resource(host + '/books.json').query()
+    getById: (bookId) ->
+      $resource(host + '/books/' + bookId + '.json').get({id: bookId})
 ]
