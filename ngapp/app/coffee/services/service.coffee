@@ -2,6 +2,8 @@ service = angular.module 'bookshelf.services', [
   'ngResource'
 ]
 
+host = 'http://localhost:3000'
+
 ###
 # 共有オブジェクト
 ###
@@ -26,9 +28,9 @@ service.factory 'userService', [
   '$resource'
   ($resource) ->
     getAll: ->
-      $resource('/users.json').query()
+      $resource(host + '/users.json').query()
     getById: (userId) ->
-      $resource('/users/' + userId + '.json').get({id: userId})
+      $resource(host + '/users/' + userId + '.json').get({id: userId})
 ]
 
 ###
@@ -38,7 +40,7 @@ service.factory 'bookService', [
   '$resource'
   ($resource) ->
     getAll: ->
-      $resource('/books.json').query()
+      $resource(host + '/books.json').query()
     getById: (bookId) ->
-      $resource('/books/' + bookId + '.json').get({id: bookId})
+      $resource(host + '/books/' + bookId + '.json').get({id: bookId})
 ]
