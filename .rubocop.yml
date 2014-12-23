@@ -51,3 +51,6 @@ AsciiComments:
 
 Style/Documentation:
   Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false

@@ -39,27 +39,35 @@ group :test, :development do
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  # gem 'database_cleaner'
-  # gem 'database_rewinder
 
   gem 'guard-rails'
   gem 'guard-rspec', require: false
+
+  ## Ruby Style Guide(ja)
+  ## https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  gem 'rubocop', require: false
+
+  gem 'faker'
 end
 
-## Ruby Style Guide(ja)
-## https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
-gem 'rubocop', require: false
+# 参考サイト
+# http://qiita.com/izumin5210/items/de614b5b5b2c44486e87
+group :test do
+  # gem 'database_cleaner'
+  gem 'database_rewinder'
+  gem 'rspec-request_describer'
+  gem 'autodoc'
+  gem 'json_spec'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano', :group => :development
-
-gem 'jbuilder', '~> 2.0'
