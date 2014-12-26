@@ -218,18 +218,37 @@ controller.controller 'userListCtrl', [
 # ユーザー詳細コントローラ
 ###
 controller.controller 'userCtrl', [
-  '$scope', 'userService',
-  ($scope, userService) ->
+  '$scope','$location', '$routeParams','userService',
+  ($scope, $location, $routeParams, userService) ->
     $scope.title = 'ユーザー詳細'
-    $scope.user =
-      { userId: 1, name: 'Nanashi1', createdTime: '2014-01-01', memo: 'memo1' }
+    $scope.editable = false
+    userId = $routeParams.userId
+    $scope.user = userService.getById(userId)
+
+    # 編集画面へ遷移
+    $scope.changeEdit = ->
+      $location.path "/user/#{userId}/edit"
 ]
 
 ###
 # ユーザー編集コントローラ
 ###
-controller.controller 'userEditCtrl', ['$scope', ($scope) ->
-  $scope.title = 'ユーザー編集'
+controller.controller 'userEditCtrl', [
+  '$scope','$location', '$routeParams','userService',
+  ($scope, $location, $routeParams, userService) ->
+    $scope.title = 'ユーザー編集'
+    $scope.editable = true
+
+    userId = $routeParams.userId
+    $scope.user = userService.getById(userId)
+
+    $scope.update = ->
+      # 保存処理
+#      userService.update($scope.user)
+      $location.path "/user/#{userId}"
+
+    $scope.cancel = ->
+      $location.path "/user/#{userId}"
 ]
 
 ###
