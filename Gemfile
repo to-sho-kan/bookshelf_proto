@@ -71,3 +71,5 @@ gem 'jbuilder'
 
 # Deploy with Capistrano
 # gem 'capistrano', :group => :development
+
+gem 'rack-cors', :require => 'rack/cors', group: [:development]
