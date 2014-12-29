@@ -22,15 +22,28 @@ service.service 'basketService', [
 ]
 
 ###
+# ユーザーリソース
+###
+service.factory 'User', [
+  '$resource'
+  ($resource) ->
+    $resource(host + '/users/:id.json', {id: '@id'})
+]
+
+###
 # ユーザーサービス
 ###
 service.factory 'userService', [
-  '$resource'
-  ($resource) ->
+  'User'
+  (User) ->
     getAll: ->
-      $resource(host + '/users.json').query()
+#      $resource(host + '/users:json').query()
+      User.query()
     getById: (userId) ->
-      $resource(host + '/users/' + userId + '.json').get({id: userId})
+      User.get({id: userId})
+    update: (user) ->
+      User.save(user)
+#      $resource(host + '/users/:id', {id: '@id'}).$save()
 ]
 
 ###
