@@ -7,7 +7,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   end
 
   describe 'GET /users' do
-    let!(:user) { create(:user) }
+    let!(:user) { Fabricate.create(:user) }
     let(:expected_json) do
       ['id'        => user.id,
        'firstName' => user.first_name,
@@ -30,7 +30,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   end
 
   describe 'GET /users/:id' do
-    let!(:user) { create(:user) }
+    let!(:user) { Fabricate.create(:user) }
     let(:expected_json) do
       { 'id'        => user.id,
         'firstName' => user.first_name,

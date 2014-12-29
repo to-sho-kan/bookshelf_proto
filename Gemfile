@@ -31,7 +31,8 @@ group :test, :development do
   gem 'timecop'
 
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
+  gem 'fabrication'
 
   gem 'guard-rails'
   gem 'guard-rspec', require: false
@@ -46,8 +47,8 @@ end
 # 参考サイト
 # http://qiita.com/izumin5210/items/de614b5b5b2c44486e87
 group :test do
-  # gem 'database_cleaner'
-  gem 'database_rewinder'
+  gem 'database_cleaner'
+  # gem 'database_rewinder'
   gem 'rspec-request_describer'
   gem 'autodoc'
   gem 'json_spec'
