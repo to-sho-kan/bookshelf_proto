@@ -51,4 +51,8 @@ RSpec.describe 'Usersリクエスト', type: :request  do
       expect(body).to be_json_eql(expected_json)
     end
   end
+
+  describe 'GET /users/:id/books' do
+    it '指定したユーザが関与している書籍の一覧を返却すること'
+  end
 end

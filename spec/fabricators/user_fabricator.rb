@@ -3,3 +3,4 @@ Fabricator(:user) do
   last_name  Faker::Name.last_name
   memo       Faker::Lorem.sentence
 end
+
