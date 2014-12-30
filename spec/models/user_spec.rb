@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  subject { User.new }
+  subject { Fabricate.build(:user) }
 
   it { should be_respond_to(:first_name) }
   it { should be_respond_to(:last_name) }

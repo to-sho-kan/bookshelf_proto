@@ -7,14 +7,13 @@ RSpec.describe 'Booksリクエスト', type: :request  do
   end
 
   describe 'GET /books' do
-    let!(:book) { create(:book) }
+    let!(:book) { Fabricate(:book) }
     let(:expected_json) do
       ['id'        => book.id,
        'title'     => book.title,
        'author'    => book.author,
        'publisher' => book.publisher,
-       'issueDate' => book.issue_date,
-       'status'    => book.status
+       'issueDate' => book.issue_date
       ].to_json
     end
 
@@ -31,14 +30,13 @@ RSpec.describe 'Booksリクエスト', type: :request  do
   end
 
   describe 'GET /books/:id' do
-    let!(:book) { create(:book) }
+    let!(:book) { Fabricate(:book) }
     let(:expected_json) do
       { 'id'        => book.id,
         'title'     => book.title,
         'author'    => book.author,
         'publisher' => book.publisher,
-        'issueDate' => book.issue_date,
-        'status'    => book.status
+        'issueDate' => book.issue_date
       }.to_json
     end
 

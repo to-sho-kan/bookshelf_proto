@@ -7,7 +7,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   end
 
   describe 'GET /users' do
-    let!(:user) { create(:user) }
+    let!(:user) { Fabricate.create(:user) }
     let(:expected_json) do
       ['id'        => user.id,
        'firstName' => user.first_name,
@@ -30,7 +30,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   end
 
   describe 'GET /users/:id' do
-    let!(:user) { create(:user) }
+    let!(:user) { Fabricate.create(:user) }
     let(:expected_json) do
       { 'id'        => user.id,
         'firstName' => user.first_name,
@@ -50,5 +50,9 @@ RSpec.describe 'Usersリクエスト', type: :request  do
 
       expect(body).to be_json_eql(expected_json)
     end
+  end
+
+  describe 'GET /users/:id/books' do
+    it '指定したユーザが関与している書籍の一覧を返却すること'
   end
 end
