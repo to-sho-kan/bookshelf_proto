@@ -12,4 +12,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render
   end
+
+  # POST /users
+  def create
+    @user = User.create!(user_params)
+    render
+  end
+
+  private
+
+  def user_params
+    snake_params.require(:user).permit(:first_name, :last_name, :memo)
+  end
+
+  def snake_params
+    params['user'].transform_keys!(&:underscore)
+    params
+  end
 end

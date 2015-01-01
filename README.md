@@ -1,5 +1,7 @@
-BookShelf [![Build Status](https://travis-ci.org/to-sho-kan/bookshelf_proto.svg)](https://travis-ci.org/to-sho-kan/bookshelf_proto.svg?branch=master)
+BookShelf [![Build Status](https://travis-ci.org/to-sho-kan/bookshelf_proto.svg)](https://travis-ci.org/to-sho-kan/bookshelf_proto.svg?branch=master) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/to-sho-kan/bookshelf_proto?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 =========
+
+
 ローカルコミュニティ向け・書籍管理アプリのプロトタイプ
 
 Feature

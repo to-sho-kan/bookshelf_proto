@@ -1,3 +1,84 @@
 <div>
-	<h2>{{title}}</h2>
+  <h2>{{title}}</h2>
+  <form name="editForm" class="form-horizontal"
+    ng-submit="update()" novalidate>
+    <div class="form-group"
+      ng-class="{'has-error': editForm.firstName.$dirty && editForm.firstName.$invalid}">
+      <label class="col-sm-1 control-label">firstName</label>
+      <div class="col-sm-5">
+        <input type="text" name='firstName' class="form-control"
+          required
+          ng-model="user.firstName"
+          ng-maxlength="30"
+          ng-readonly="!editable" />
+      </div>
+      <span ng-if="editForm.firstName.$dirty"
+        ng-messages="editForm.firstName.$error">
+        <span class="help-block" ng-message="required">
+          必須です
+        </span>
+        <span class="help-block" ng-message="maxlength">
+          30文字以内で設定してください
+        </span>
+      </span>
+    </div>
+    <div class="form-group"
+      ng-class="{'has-error': editForm.lastName.$dirty && editForm.lastName.$invalid}">
+      <label class="col-sm-1 control-label">lastName</label>
+      <div class="col-sm-5">
+        <input type="text" name='lastName' class="form-control"
+          required
+          ng-model="user.lastName"
+          ng-maxlength="30"
+          ng-readonly="!editable" />
+      </div>
+      <span ng-if="editForm.lastName.$dirty"
+        ng-messages="editForm.lastName.$error">
+        <span class="help-block" ng-message="required">
+          必須です
+        </span>
+        <span class="help-block" ng-message="maxlength">
+          30文字以内で設定してください
+        </span>
+      </span>
+    </div>
+    <div class="form-group"
+      ng-class="{'has-error': editForm.memo.$dirty && editForm.memo.$invalid}">
+      <label class="col-sm-1 control-label">memo</label>
+      <div class="col-sm-5">
+        <input type="text" name='memo' class="form-control"
+          ng-model="user.memo"
+          ng-maxlength="40"
+          ng-readonly="!editable" />
+      </div>
+      <span ng-if="editForm.memo.$dirty"
+            ng-messages="editForm.memo.$error">
+        <span class="help-block" ng-message="maxlength">
+          40文字以内で設定してください
+        </span>
+      </span>
+    </div>
+    <div class="form-group col-sm-5">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button"
+          class="btn btn-lg btn-primary"
+          ng-click="changeEdit()"
+          ng-if="!editable">
+          Edit
+         </button>
+        <button type="submit"
+          class="btn btn-lg btn-primary"
+          ng-disabled="editForm.$invalid"
+          ng-if="editable">
+          Submit
+         </button>
+        <button type="button"
+          class="btn btn-lg"
+          ng-click="cancel()"
+          ng-if="editable">
+          cancel
+         </button>
+       </div>
+    </div>
+  </form>
 </div>
