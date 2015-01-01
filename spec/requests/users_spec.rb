@@ -55,7 +55,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   describe 'POST /users' do
     let(:path) { '/users' }
     let(:user) { build(:user) }
-    let(:receave_json) do
+    let(:receive_json) do
       { 'user' => { 'firstName' => user.first_name,
                     'lastName'  => user.last_name,
                     'memo'      => user.memo
@@ -64,17 +64,17 @@ RSpec.describe 'Usersリクエスト', type: :request  do
 
     context 'パラメータが正しいとき' do
       it '200 Created が返ってくる' do
-        post path, receave_json, env
+        post path, receive_json, env
         expect(response).to be_success
         expect(response.status).to eq(200)
       end
 
       it 'Userが1増える' do
-        expect { post path, receave_json, env }.to change(User, :count).by(1)
+        expect { post path, receive_json, env }.to change(User, :count).by(1)
       end
 
       it 'ユーザを返却すること' do
-        post path, receave_json, env
+        post path, receive_json, env
         body = response.body
         response_user = User.last
         response_json = { 'id'        => response_user.id,
