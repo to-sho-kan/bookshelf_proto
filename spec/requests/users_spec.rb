@@ -54,24 +54,21 @@ RSpec.describe 'Usersリクエスト', type: :request  do
 
   describe 'POST /users' do
     let(:path) { '/users' }
+    let(:user) { { user: attributes_for(:user).stringify_keys }.to_json }
 
     context 'パラメータが正しいとき' do
-      before do
-        @user = { user: attributes_for(:user).stringify_keys }.to_json
-      end
-
       it '200 Created が返ってくる' do
-        post path, @user, env
+        post path, user, env
         expect(response).to be_success
         expect(response.status).to eq(200)
       end
 
       it 'Userが1増える' do
-        expect { post path, @user, env }.to change(User, :count).by(1)
+        expect { post path, user, env }.to change(User, :count).by(1)
       end
 
       it 'ユーザを返却すること' do
-        post path, @user, env
+        post path, user, env
         body = response.body
         response_user = User.last
         response_json = { 'id'        => response_user.id,
