@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def snake_params
-    params['user'] = Hash[params['user'].map { |k, v| [k.underscore, v] }]
+    params['user'].transform_keys!(&:underscore)
     params
   end
 end
