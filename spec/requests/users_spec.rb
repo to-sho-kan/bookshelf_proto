@@ -59,7 +59,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
       { 'user' => { 'firstName' => user.first_name,
                     'lastName'  => user.last_name,
                     'memo'      => user.memo
-      } }.to_json
+                  } }.to_json
     end
 
     context 'パラメータが正しいとき' do
