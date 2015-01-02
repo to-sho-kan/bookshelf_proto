@@ -20,10 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :users do
-    resource :books, only: [:index]
-  end
-
   # Example resource route with options:
   #   resources :products do
   #     member do
