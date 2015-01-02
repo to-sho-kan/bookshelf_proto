@@ -14,6 +14,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'ngapp/**/*'
+    - 'vendor/bundle/**/*'
 
 # # Use UTF-8 as the source file encoding.
 # Encoding:
