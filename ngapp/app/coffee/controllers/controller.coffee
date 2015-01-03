@@ -194,8 +194,13 @@ controller.controller 'borrowCtrl', ['$scope', ($scope) ->
 ###
 # 借用中・履歴一覧・返却コントローラ
 ###
-controller.controller 'rentalListCtrl', ['$scope', ($scope) ->
-  $scope.title = 'レンタルリスト'
+controller.controller 'rentalListCtrl', [
+  '$scope', '$routeParams', 'checkoutBookService',
+  ($scope, $routeParams, checkoutBookService) ->
+    $scope.title = 'レンタルリスト'
+
+    userId = $routeParams.userId
+    $scope.bookList = checkoutBookService.getAll(userId)
 ]
 
 ### 管理者ホーム ###
