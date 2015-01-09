@@ -9,12 +9,14 @@ RSpec.describe 'Booksリクエスト', type: :request  do
   describe 'GET /books' do
     let!(:book) { create(:book) }
     let(:expected_json) do
-      ['id'        => book.id,
-       'title'     => book.title,
-       'author'    => book.author,
-       'publisher' => book.publisher,
-       'issueDate' => book.issue_date,
-       'status'    => book.status
+      [
+        { 'id'        => book.id,
+          'title'     => book.title,
+          'author'    => book.author,
+          'publisher' => book.publisher,
+          'issueDate' => book.issue_date,
+          'status'    => book.status
+        }
       ].to_json
     end
 
@@ -25,7 +27,6 @@ RSpec.describe 'Booksリクエスト', type: :request  do
     it '書籍の一覧を返却すること' do
       expect(response).to be_success
       body = response.body
-
       expect(body).to be_json_eql(expected_json)
     end
   end

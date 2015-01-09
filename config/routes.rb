@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :books, :only => [:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,8 +13,12 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
-  resources :users, only: [:index, :show, :create]
+  resources :books, only: [:index, :show]
+  resources :users, only: [:index, :show, :create] do
+    resources :books, only: [], controller: :user_books do
+      get :index, on: :collection
+    end
+  end
 
   # Example resource route with options:
   #   resources :products do

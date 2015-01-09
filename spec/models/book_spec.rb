@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe Book do
+  it '有効なFactoryを持っていること' do
+    expect(build(:book)).to be_valid
+  end
+
   it 'タイトルと作者、出版社、発行日、状態があれば有効であること' do
     book = create(:book)
     expect(book).to be_valid
