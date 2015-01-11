@@ -1,6 +1,8 @@
 class UserBooksController < ApplicationController
   def index
-    @books = User.find(params['user_id']).books
+    status = params['status'] || 'all'
+
+    @books = User.find_books(params['user_id'], status)
     render
   end
 end
