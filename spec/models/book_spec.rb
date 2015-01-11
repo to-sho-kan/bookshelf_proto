@@ -33,10 +33,4 @@ describe Book do
     book.valid?
     expect(book.errors[:issue_date]).to include("can't be blank")
   end
-
-  it '状態がなければ無効であること' do
-    book = build(:book, status: nil)
-    book.valid?
-    expect(book.errors[:status]).to include("can't be blank")
-  end
 end
