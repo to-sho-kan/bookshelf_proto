@@ -1,1 +1,1 @@
-directive = angular.module 'bookshelf.directives', []
+directive = angular.module 'bookshelf.directives'

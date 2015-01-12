@@ -1,4 +1,5 @@
 app = angular.module 'bookshelf', [
+  'bookshelf.constant'
   'bookshelf.controllers'
   'bookshelf.services'
   'bookshelf.filters'

@@ -1,8 +1,7 @@
 app = angular.module 'bookshelf'
 
 app.config [
-  '$routeProvider'
-  '$locationProvider'
+  '$routeProvider','$locationProvider'
   ($routeProvider, $locationProvider) ->
     $routeProvider
     # common
@@ -15,7 +14,7 @@ app.config [
     .when '/logout/',
       templateUrl: '../views/common/logout.html'
       controller: 'logoutCtrl'
-     .when '/user/new/',
+    .when '/user/new/',
       templateUrl: '../views/common/userRegistration.html'
       controller: 'userRegistrationCtrl'
     .when '/book/',
@@ -36,9 +35,6 @@ app.config [
     .when '/profile/:userId/edit/',
       templateUrl: '../views/client/home.html'
       controller: 'profileEditCtrl'
-    .when '/borrow/:bookId/',
-      templateUrl: '../views/common/borrow.html'
-      controller: 'borrowCtrl'
     .when '/rental/:userId/',
       templateUrl: '../views/client/rentalList.html'
       controller: 'rentalListCtrl'
@@ -62,7 +58,7 @@ app.config [
       templateUrl: '../views/admin/book.html'
       controller: 'bookEditCtrl'
     .when '/operation/',
-      templateUrl: '../views/admin/operation.html'
+      templateUrl: '../views/admin/rentalOperation.html'
       controller: 'rentalOperationCtrl'
     # other
     .otherwise
