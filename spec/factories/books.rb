@@ -4,6 +4,5 @@ FactoryGirl.define do
     author     Faker::Lorem.word
     publisher  Faker::Lorem.word
     issue_date { Time.now }
-    status     Faker::Number.digit
   end
 end

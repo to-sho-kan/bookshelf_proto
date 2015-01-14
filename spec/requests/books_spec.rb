@@ -14,8 +14,7 @@ RSpec.describe 'Booksリクエスト', type: :request  do
           'title'     => book.title,
           'author'    => book.author,
           'publisher' => book.publisher,
-          'issueDate' => book.issue_date,
-          'status'    => book.status
+          'issueDate' => book.issue_date
         }
       ].to_json
     end
@@ -38,8 +37,7 @@ RSpec.describe 'Booksリクエスト', type: :request  do
         'title'     => book.title,
         'author'    => book.author,
         'publisher' => book.publisher,
-        'issueDate' => book.issue_date,
-        'status'    => book.status
+        'issueDate' => book.issue_date
       }.to_json
     end
 
