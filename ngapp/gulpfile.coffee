@@ -59,6 +59,7 @@ gulp.task 'build', [
   'compile-sass'
 ], ->
   gulp.src mainBowerFiles
+    env: "development"
     paths:
       bowerDirectory: 'bower_components'
       bowerJson: 'bower.json'
@@ -80,6 +81,7 @@ gulp.task 'clean', ->
 # デプロイ用タスク
 gulp.task 'prod', ['clean', 'build'], ->
   gulp.src mainBowerFiles
+    env: "production"
     paths:
       bowerDirectory: 'bower_components'
       bowerJson: 'bower.json'
