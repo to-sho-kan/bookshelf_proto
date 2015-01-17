@@ -1,4 +1,4 @@
-filter = angular.module 'bookshelf.filters', []
+filter = angular.module 'bookshelf.filters'
 
 ###
 # 蔵書状態フィルター

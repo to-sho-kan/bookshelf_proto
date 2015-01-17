@@ -1,0 +1,5 @@
+angular.module 'bookshelf.constant', []
+angular.module 'bookshelf.services', ['ngResource']
+angular.module 'bookshelf.controllers', []
+angular.module 'bookshelf.directives', []
+angular.module 'bookshelf.filters', []
