@@ -55,3 +55,6 @@ Style/Documentation:
 
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
+
+Style/MultilineOperationIndentation:
+  Enabled: false
