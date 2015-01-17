@@ -74,7 +74,7 @@ module.exports = (config) ->
     # enable / disable watching file and executing tests whenever any file changes
     # trueに設定すると、filesで指定したファイルに変更があった際に自動的にテストを再実行します
     # autoWatchを有効にするには、singleRunをfalseに設定する必要があります
-    autoWatch: false
+    autoWatch: true
 
     # start these browsers
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
@@ -84,4 +84,4 @@ module.exports = (config) ->
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
     # trueに設定するとテストを１回実行した後に終了します
-    singleRun: true
+    singleRun: false

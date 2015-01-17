@@ -1,7 +1,6 @@
 describe '書籍一覧コントローラのテスト', ->
-  scope = undefined
-  ctrl = undefined
   $httpBackend = undefined
+  scope = undefined
 
   beforeEach module('bookshelf.constant')
   beforeEach module('bookshelf.services')
@@ -35,7 +34,7 @@ describe '書籍一覧コントローラのテスト', ->
       ]
 
     scope = $rootScope.$new()
-    ctrl = $controller 'bookListCtrl',
+    $controller 'bookListCtrl',
       $scope: scope
 
   it 'タイトル名が「書籍一覧」であること', ->
