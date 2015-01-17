@@ -68,4 +68,10 @@ $ gulp clean
 
 Test
 ====
+```
+$ cd ngapp/
+$ npm install -g karma-cli
 
+$ cd ngapp/test
+$ karma start
+```
