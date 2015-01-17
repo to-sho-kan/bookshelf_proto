@@ -2,16 +2,52 @@ require 'rails_helper'
 
 RSpec.describe 'UserBooksリクエスト', type: :request  do
   def create_books(user)
-    [].tap do |books|
-      books << create(:user_book, user: user).book
-      books << create(:returned_user_book, user: user).book
-      books << create(:user_book, user: user).book
-    end
+    # 貸出中の本
+    create(:user_book, user: user)
+
+    # 返却状態の本
+    create(:returned_user_book, user: user)
+
+    # ２度目の貸出中の本
+    book_id = create(:user_book, user: user).book.id
+    UserBook.create(user_id: user.id, book_id: book_id,
+                    checkout_date: Date.current + 8.days)
+
+    user.books
   end
 
-  def books_to_received_json(books)
+  # books情報を元に以下のようなjsonオブジェクトを生成すること
+  # [
+  #  {
+  #    "id": 123,
+  #    "title": "Book Title",
+  #    "author": "someone",
+  #    "publisher": "somepublisher",
+  #    "rentals": [
+  #      {
+  #        "checkoutDate": "2015-01-01",
+  #        "returnDate": "",
+  #      },
+  #      {
+  #        "checkoutDate": "2015-01-01",
+  #        "returnDate": "",
+  #      }
+  #    ]
+  #  },
+  #
+  #  //...同じようなハッシュ
+  # }
+  def received_user_books_json(user_id, books)
     books.map do |book|
-      book.as_json(except: [:updated_at, :created_at]).transform_keys! { |k| k.camelize(:lower) }
+      book_hash = book.as_json(except: [:updated_at, :created_at])
+                      .transform_keys! { |k| k.camelize(:lower) }
+
+      book_hash['rentals'] = book.user_books.where(user_id: user_id).map do |user_book|
+        user_book.as_json(only: [:checkout_date, :return_date])
+                 .transform_keys! { |k| k.camelize(:lower) }
+      end
+
+      book_hash
     end.to_json
   end
 
@@ -23,7 +59,7 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
   describe 'GET /users/:id/books' do
     let!(:user)  { create(:user) }
     let!(:books) { create_books(user) }
-    let!(:expected_books) { books_to_received_json(books) }
+    let!(:expected_books) { received_user_books_json(user.id, books) }
 
     context 'status未指定のケース' do
       before(:each) do
@@ -57,7 +93,7 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
 
     context 'status: checkoutのケース' do
       let!(:checkout_books) { User.find(user.id).checkout_books }
-      let!(:expected_books) { books_to_received_json(checkout_books) }
+      let!(:expected_books) { received_user_books_json(user.id, checkout_books) }
 
       before(:each) do
         get "users/#{user.id}/books", { status: :checkout }, env
@@ -76,7 +112,7 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
 
     context 'status: returnedのケース' do
       let!(:returned_books) { User.find(user.id).returned_books }
-      let!(:expected_books) { books_to_received_json(returned_books) }
+      let!(:expected_books) { received_user_books_json(user.id, returned_books) }
 
       before(:each) do
         get "users/#{user.id}/books", { status: :returned }, env

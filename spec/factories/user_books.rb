@@ -7,7 +7,7 @@ FactoryGirl.define do
 
     # 返却分データ
     factory :returned_user_book do
-      return_date   { Date.current + 7.days }
+      return_date { Date.current + 7.days }
     end
   end
 end

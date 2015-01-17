@@ -15,9 +15,7 @@ Rails.application.routes.draw do
   #   resources :products
   resources :books, only: [:index, :show]
   resources :users, only: [:index, :show, :create] do
-    resources :books, only: [], controller: :user_books do
-      get :index, on: :collection
-    end
+    resources :books, only: [:index, :show], controller: :user_books
   end
 
   # Example resource route with options:
