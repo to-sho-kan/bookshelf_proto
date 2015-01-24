@@ -55,3 +55,10 @@ Style/Documentation:
 
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
