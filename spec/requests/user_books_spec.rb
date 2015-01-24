@@ -13,7 +13,8 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
     UserBook.create(user_id: user.id, book_id: book_id,
                     checkout_date: Date.current + 8.days)
 
-    user.books
+    # uniq しないと返却した本が２重に取得されてしまう
+    user.books.uniq
   end
 
   # books情報を元に以下のようなjsonオブジェクトを生成すること
@@ -69,10 +70,10 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
       it ':idで指定されたユーザに関連する全書籍を返却すること' do
         expect(response).to be_success
 
-        received_books = JSON.parse(response.body)
+        received_books = response.body
         expect(body).to be_json_eql(expected_books)
 
-        expect(received_books.count).to eq books.size
+        expect(JSON.parse(received_books).count).to eq books.size
       end
     end
 
@@ -84,10 +85,10 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
       it ':idで指定されたユーザに関連する全書籍を返却すること' do
         expect(response).to be_success
 
-        received_books = JSON.parse(response.body)
-        expect(body).to be_json_eql(expected_books)
+        received_books = response.body
+        expect(received_books).to be_json_eql(expected_books)
 
-        expect(received_books.count).to eq books.size
+        expect(JSON.parse(received_books).count).to eq books.size
       end
     end
 
@@ -102,11 +103,10 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
       it ':idで指定されたユーザに関連する書籍で貸出中の書籍を返却すること' do
         expect(response).to be_success
 
-        received_books = JSON.parse(response.body)
-        expect(body).to be_json_eql(expected_books)
+        received_books = response.body
+        expect(received_books).to be_json_eql(expected_books)
 
-        expect(received_books.count).to eq checkout_books.size
-        expect(received_books.count).to eq 2 # <= 念のため
+        expect(JSON.parse(received_books).count).to eq checkout_books.size
       end
     end
 
@@ -121,11 +121,10 @@ RSpec.describe 'UserBooksリクエスト', type: :request  do
       it ':idで指定されたユーザに関連する書籍で返却済みの書籍を返却すること' do
         expect(response).to be_success
 
-        received_books = JSON.parse(response.body)
-        expect(body).to be_json_eql(expected_books)
+        received_books = response.body
+        expect(received_books).to be_json_eql(expected_books)
 
-        expect(received_books.count).to eq returned_books.size
-        expect(received_books.count).to eq 1 # <= 念のため
+        expect(JSON.parse(received_books).count).to eq returned_books.size
       end
     end
   end
