@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   # POST /user/:id
   def update
     edit_user = snake_params
-    puts edit_user
     @user.update_attributes(first_name: edit_user[:user]['first_name'],
                             last_name: edit_user[:user]['last_name'],
                             memo: edit_user[:user]['memo'])

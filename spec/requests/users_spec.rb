@@ -9,12 +9,12 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   describe 'GET /users' do
     let!(:user) { create(:user) }
     let(:expected_json) do
-      ['id'        => user.id,
-       'firstName' => user.first_name,
-       'lastName'  => user.last_name,
-       'memo'      => user.memo,
-       'createdAt' => user.created_at
-      ].to_json
+      { 'users' => ['id'        => user.id,
+                    'firstName' => user.first_name,
+                    'lastName'  => user.last_name,
+                    'memo'      => user.memo,
+                    'createdAt' => user.created_at
+      ]}.to_json
     end
 
     before(:each) do
@@ -32,12 +32,12 @@ RSpec.describe 'Usersリクエスト', type: :request  do
   describe 'GET /users/:id' do
     let!(:user) { create(:user) }
     let(:expected_json) do
-      { 'id'        => user.id,
-        'firstName' => user.first_name,
-        'lastName'  => user.last_name,
-        'memo'      => user.memo,
-        'createdAt' => user.created_at
-      }.to_json
+      { 'user' => { 'id'        => user.id,
+                    'firstName' => user.first_name,
+                    'lastName'  => user.last_name,
+                    'memo'      => user.memo,
+                    'createdAt' => user.created_at
+      } }.to_json
     end
 
     before(:each) do
@@ -59,7 +59,7 @@ RSpec.describe 'Usersリクエスト', type: :request  do
       { 'user' => { 'firstName' => user.first_name,
                     'lastName'  => user.last_name,
                     'memo'      => user.memo
-                  } }.to_json
+      } }.to_json
     end
 
     context 'パラメータが正しいとき' do
@@ -77,12 +77,46 @@ RSpec.describe 'Usersリクエスト', type: :request  do
         post path, receive_json, env
         body = response.body
         response_user = User.last
-        response_json = { 'id'        => response_user.id,
-                          'firstName' => response_user.first_name,
-                          'lastName'  => response_user.last_name,
-                          'memo'      => response_user.memo,
-                          'createdAt' => response_user.created_at
-                        }.to_json
+        response_json = { 'user' => { 'id'        => response_user.id,
+                                      'firstName' => response_user.first_name,
+                                      'lastName'  => response_user.last_name,
+                                      'memo'      => response_user.memo,
+                                      'createdAt' => response_user.created_at
+                        } }.to_json
+
+        expect(body).to be_json_eql(response_json)
+      end
+    end
+  end
+
+  describe 'PATCH /users/:id' do
+    let(:path) { '/users/1' }
+    let!(:user) { create(:user) }
+    let(:receive_json) do
+      { 'user' => { 'firstName' => user.first_name,
+                    'lastName'  => user.last_name,
+                    'memo'      => user.memo,
+                    'createdAt' => user.created_at
+      } }.to_json
+    end
+
+    context 'パラメータが正しいとき' do
+      it '200 Completed が返ってくる' do
+        patch path, receive_json, env
+        expect(response).to be_success
+        expect(response.status).to eq(200)
+      end
+
+      it 'ユーザを返却すること' do
+        patch path, receive_json, env
+        body = response.body
+        response_user = User.first
+        response_json = { 'user' => { 'id'        => response_user.id,
+                                      'firstName' => response_user.first_name,
+                                      'lastName'  => response_user.last_name,
+                                      'memo'      => response_user.memo,
+                                      'createdAt' => response_user.created_at
+                        } }.to_json
 
         expect(body).to be_json_eql(response_json)
       end
